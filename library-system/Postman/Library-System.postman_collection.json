@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "31799d3d-bd68-45e0-a28c-290580695671",
+		"name": "Library-System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23920117"
+	},
+	"item": [
+		{
+			"name": "Add Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 2,\r\n  \"title\": \"Call from the Wild\",\r\n  \"author\": \"Jack London\",\r\n  \"isbn\": \"SDFS45F6456GFHERT\",\r\n  \"publishedDate\": \"1918-07-02T20:54:20.504Z\",\r\n  \"publisher\": \"Lion Gate\",\r\n  \"pages\": 459\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7072/Book",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7072",
+					"path": [
+						"Book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 2,\r\n  \"title\": \"Call from the Wild\",\r\n  \"author\": \"Jack London\",\r\n  \"isbn\": \"SDFS45F6456GFHERT\",\r\n  \"publishedDate\": \"1918-07-02T20:54:20.504Z\",\r\n  \"publisher\": \"Lion Gate\",\r\n  \"pages\": 459\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7072/Book",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7072",
+					"path": [
+						"Book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7072/Book/5",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7072",
+					"path": [
+						"Book",
+						"5"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

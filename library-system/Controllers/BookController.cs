@@ -13,10 +13,10 @@ namespace library_system.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Add([FromBody] Book book)
 		{
-			bool result = await _bookService.AddAsync(book);
+			var (result, updatedBook) = await _bookService.AddAsync(book);
 			if (result)
 			{
-				return Ok(book);
+				return Ok(updatedBook);
 			}
 			else
 			{

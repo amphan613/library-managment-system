@@ -1,9 +1,9 @@
 ﻿using library_system.Context;
-using library_system.DataAccess.Repositories;
+using library_system.Repositories;
 
 namespace library_system.DataAccess.UnitOfWork
 {
-	public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
 	{
 		IBookRepository Books { get; }
 		Task<int> CompleteAsync();

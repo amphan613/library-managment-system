@@ -1,7 +1,7 @@
 using library_system.Context;
-using library_system.DataAccess.Factories;
+using library_system.DataAccess.Repositories;
 using library_system.DataAccess.UnitOfWork;
-using library_system.Repositories;
+using library_system.Factories;
 using library_system.Services;
 using Microsoft.EntityFrameworkCore;
 

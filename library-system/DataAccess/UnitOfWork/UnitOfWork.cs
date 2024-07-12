@@ -1,5 +1,5 @@
 ﻿using library_system.Context;
-using library_system.Repositories;
+using library_system.DataAccess.Repositories;
 
 namespace library_system.DataAccess.UnitOfWork
 {

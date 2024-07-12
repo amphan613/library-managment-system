@@ -1,10 +1,10 @@
-﻿using library_system.DataAccess.Factories;
-using library_system.DataAccess.UnitOfWork;
+﻿using library_system.DataAccess.UnitOfWork;
 using library_system.Entities;
+using library_system.Factories;
 
 namespace library_system.Services
 {
-	public interface IBookService
+    public interface IBookService
 	{
 		public Task<(bool, Book)> AddAsync(Book book);
 		public Task<bool> UpdateAsync(Book book);

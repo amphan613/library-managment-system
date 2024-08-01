@@ -8,6 +8,7 @@
 		public int Pages { get; set; }
 		public int DurationInMinutes { get; set; }
 		public BookType Type { get; set; }
+		public decimal RentalPrice { get; set; }
 	}
 
 	public enum BookType

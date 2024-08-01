@@ -2,8 +2,8 @@
 
 namespace library_system.Factories
 {
-    public interface IBookFactory
-    {
-        Book AddBook(string title, string author, BookType type);
-    }
+	public interface IBookFactory
+	{
+		Book AddBook(string title, string author, BookType type);
+	}
 }

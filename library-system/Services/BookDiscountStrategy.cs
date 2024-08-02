@@ -9,12 +9,24 @@ namespace library_system.Services
 
 	public class AudioBookDiscountStrategy : IDiscountStrategy
 	{
-		public decimal CalculateDiscount(Book book) => 0.9m; // 10% discount
+		public decimal CalculateDiscount(Book book)
+		{
+			//hardcode return here for simplicity but this method can 
+			//be as complex as you want.
+			//ex.  The discount rate can be retrieved via an external asynchronous API call.
+			return 0.9m;
+		}
 	}
 
 	public class PaperBackDiscountStrategy : IDiscountStrategy
 	{
-		public decimal CalculateDiscount(Book book) => 0.8m; // 20% discount
+		public decimal CalculateDiscount(Book book)
+		{
+			//hardcode return here for simplicity but this method can 
+			//be as complex as you want.
+			//ex.  The discount rate can be retrieved via an external asynchronous API call.
+			return 0.9m;
+		}
 	}
 
 	public class DefaultDiscountStrategy : IDiscountStrategy

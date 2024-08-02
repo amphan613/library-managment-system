@@ -31,6 +31,11 @@ builder.Services.AddTransient<IBookFactory, AudioBookFactory>();
 builder.Services.AddTransient<IBookFactory, PaperBackBookFactory>();
 builder.Services.AddTransient<BookFactoryResolver>();
 
+builder.Services.AddTransient<IDiscountRateFactory, DiscountRateFactory>();
+builder.Services.AddTransient<AudioBookDiscountStrategy>();
+builder.Services.AddTransient<PaperBackDiscountStrategy>();
+builder.Services.AddTransient<DefaultDiscountStrategy>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

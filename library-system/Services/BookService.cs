@@ -14,10 +14,12 @@ namespace library_system.Services
 
 	public class BookService(
 		IUnitOfWork unitOfWork, 
-		BookFactoryResolver bookFactoryResolver) : IBookService
+		BookFactoryResolver bookFactoryResolver,
+		IDiscountRateFactory discountRateFactory) : IBookService
 	{
 		private readonly IUnitOfWork _unitOfWork = unitOfWork;
 		private readonly BookFactoryResolver _bookFactoryResolver = bookFactoryResolver;
+		private readonly IDiscountRateFactory _discountRateFactory = discountRateFactory;
 
 		public async Task<(bool,Book)> AddAsync(Book bookToAdd)
 		{
@@ -50,36 +52,9 @@ namespace library_system.Services
 
 			if (book == null) return null;
 
-			// Select the appropriate discount strategy based on the book type
-			IDiscountStrategy discountStrategy = book.Type switch
-			{
-				BookType.AudioBook => new AudioBookDiscountStrategy(),
-				BookType.PaperBack => new PaperBackDiscountStrategy(),
-				_ => new DefaultDiscountStrategy()
-			};
+			var discountStrategy = _discountRateFactory.GetStrategy(book.Type);
 
-			Func<Book, decimal> rentalCostCalculationFunc = b => discountStrategy.CalculateDiscount(b);
-
-			// Apply the rental cost calculation
-			book = SetRentalCost(book, rentalCostCalculationFunc);
-
-			return book;
-		}
-
-		private Book SetRentalCost(Book book, Func<Book, decimal> rentalCostCalculationFunc)
-		{
-			if (book == null)
-			{
-				throw new ArgumentNullException(nameof(book), "Book cannot be null.");
-			}
-
-			if (rentalCostCalculationFunc == null)
-			{
-				throw new ArgumentNullException(nameof(rentalCostCalculationFunc), "Rental cost calculation function cannot be null.");
-			}
-
-			// Invoke the function with the book as an argument to calculate the rental price
-			book.RentalPrice = rentalCostCalculationFunc(book);
+			book.RentalPrice = discountStrategy.CalculateDiscount(book);
 
 			return book;
 		}

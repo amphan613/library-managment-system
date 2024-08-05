@@ -52,18 +52,27 @@ namespace library_system.Controllers
 			}
 		}
 
-		[HttpGet("{id}")]
-		public async Task<IActionResult> Get(int id)
+		[HttpGet("{id?}")]
+		public async Task<IActionResult> Get(int? id)
 		{
-			var book = await _bookService.GetByIdAsync(id);
-			if (book != null)
+			if (id.HasValue)
 			{
-				return Ok(book);
+				var book = await _bookService.GetByIdAsync(id.Value);
+				if (book != null)
+				{
+					return Ok(book);
+				}
+				else
+				{
+					return NotFound("Book not found.");
+				}
 			}
 			else
 			{
-				return NotFound("Book not found.");
+				var books = await _bookService.GetAllAsync();
+				return Ok(books);
 			}
 		}
+
 	}
 }

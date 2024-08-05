@@ -6,10 +6,11 @@ namespace library_system.Services
 {
     public interface IBookService
 	{
-		public Task<(bool, Book)> AddAsync(Book book);
-		public Task<bool> UpdateAsync(Book book);
-		public Task<bool> DeleteAsync(int id);
-		public Task<Book?> GetByIdAsync(int id);
+		Task<(bool, Book)> AddAsync(Book book);
+		Task<bool> UpdateAsync(Book book);
+		Task<bool> DeleteAsync(int id);
+		Task<Book?> GetByIdAsync(int id);
+		Task<List<Book>> GetAllAsync();
 	}
 
 	public class BookService(
@@ -57,6 +58,11 @@ namespace library_system.Services
 			book.RentalPrice = discountStrategy.CalculateDiscount(book);
 
 			return book;
+		}
+
+		public async Task<List<Book>> GetAllAsync()
+		{
+			return await _unitOfWork.Books.GetAllAsync();
 		}
 	}
 }

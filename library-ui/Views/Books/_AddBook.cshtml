@@ -1,0 +1,87 @@
+﻿<style>
+	.add-book-form {
+		border-radius: 5px;
+		background-color: #f2f2f2;
+		padding: 20px;
+	}
+
+	.form-group label {
+		color: #333;
+		/* Dark grey text for labels */
+	}
+
+	input[type=text]:hover {
+		background-color: #589a5b;
+	}
+
+	input[type=text],
+	select,
+	textarea {
+		width: 30%;
+		/* Full width */
+		padding: 12px;
+		/* Some padding */
+		border: 1px solid #ccc;
+		/* Gray border */
+		border-radius: 4px;
+		/* Rounded borders */
+		box-sizing: border-box;
+		/* Make sure that padding and width stays in place */
+		margin-top: 6px;
+		/* Add a top margin */
+		margin-bottom: 16px;
+		/* Bottom margin */
+		resize: vertical;
+		display: block;
+		/* Make input elements display as block */
+	}
+
+	/* Add more styles here as needed to match _Default.cshtml */
+</style>
+
+<script>
+	$(document).ready(function () {
+		$('.add-book-form form').submit(function (e) {
+			e.preventDefault(); // Prevent the default form submission
+			var formData = $(this).serialize(); // Serialize the form data
+
+			$.ajax({
+				type: 'POST',
+				//url: $(this).attr('action'), // or explicitly '/Books/AddBook'
+				url: '/Books/AddBook',
+				data: formData,
+				success: function (response) {
+					// Handle success - maybe redirect to another page or show a success message
+					window.location.href = '/'; // Redirect
+				},
+				error: function () {
+					// Handle error
+					alert('There was an error adding the book.');
+				}
+			});
+		});
+	});
+</script>
+
+<div class="add-book-form">
+	<h2>Add a New Book</h2>
+	<form asp-controller="Books" asp-action="AddBook" method="post">
+		@Html.AntiForgeryToken()
+		<div class="form-group">
+			<label for="title">Title</label>
+			<input type="text" id="Title" name="title" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label for="author">Author</label>
+			<input type="text" id="Author" name="author" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label for="type">Type</label>
+			<select id="type" name="type" class="form-control">
+				<option value="AudioBook">Audio Book</option>
+				<option value="PaperBack">Paper Back</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary">Add Book</button>
+	</form>
+</div>

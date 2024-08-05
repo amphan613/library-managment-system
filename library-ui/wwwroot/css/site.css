@@ -1,0 +1,155 @@
+html {
+	font-size: 14px;
+}
+
+@media (min-width: 768px) {
+	html {
+		font-size: 16px;
+	}
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+	box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	margin-bottom: 60px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#menu {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 250px;
+	height: 100%;
+	background-color: #f0f0f0;
+	transform: translateX(-250px);
+	transition: transform 0.3s ease;
+}
+
+#menu.open {
+	transform: translateX(0);
+}
+
+#menuToggle {
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+}
+
+#menu {
+	padding-top: 30px;
+	/* Add padding to top to push content down */
+}
+
+/* Style for the list items */
+ul li {
+
+	background-color: #b2f9b2;
+	/* Default background color */
+	padding: 10px 20px;
+	/* Add some padding inside the boxes */
+	margin: 5px 0;
+	/* Add some space between the boxes */
+	list-style-type: none;
+	/* Remove the default list item bullet */
+	cursor: pointer;
+	/* Change cursor to pointer to indicate it's clickable */
+
+	margin-right: 20px;
+}
+
+/* Change background color on hover */
+ul li:hover {
+	background-color: #6faf6f;
+	color: white;
+
+	margin-right: 20px;
+	/* Change text color to white for better visibility */
+}
+
+/* Style for the links inside the list items to fill the entire space */
+ul li a {
+	display: block;
+	/* Make the link fill the entire list item box */
+	color: black;
+	/* Default text color */
+	text-decoration: none;
+	/* Remove underline from links */
+}
+
+/* Change link text color on hover to maintain readability */
+ul li a:hover {
+	color: white;
+}
+
+.active-menu-item {
+	background-color: #6faf6f;
+	/* Or any color you prefer */
+	color: white;
+}
+
+.table-title {
+	text-align: center;
+	margin: 20px 0;
+	/* Adjusts the space above and below the title */
+}
+
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #eaeaea;
+}
+
+th,
+td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #eaeaea;
+}
+
+th {
+	background-color: #6faf6f;
+	/* A darker green color */
+	color: white;
+	/* Set text color to white */
+}
+
+tr:nth-child(even) {
+	background-color: #f0f8ff;
+}
+
+tr:hover {
+	background-color: #e0e0e0;
+}
+
+.btn-primary {
+	background-color: #04AA6D;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.btn-primary:hover {
+	background-color: #45ebae;
+	/* Changes the background color to red on hover */
+}
+
+.btn-primary:active {
+	background-color: #a6bcfa;
+	/* Changes the background color to orange when clicked */
+}

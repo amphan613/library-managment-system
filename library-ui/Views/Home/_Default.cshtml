@@ -1,0 +1,57 @@
+﻿@*
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var books = ViewBag.Data as IEnumerable<dynamic>;
+    var properties = new System.Reflection.PropertyInfo[] { };
+    if (books != null && books.Any())
+    {
+        properties = books.First().GetType().GetProperties();
+    }
+}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Data Table</title>
+</head>
+
+<body>
+    <h2 class="table-title">List of Books</h2>
+    @if (books != null && books.Any())
+    {
+        <table border="1">
+            <thead>
+                <tr>
+                    @foreach (var prop in properties)
+                    {
+                        <th>@prop.Name</th>
+                    }
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var book in books)
+                {
+                    <tr>
+                        @foreach (var prop in properties)
+                        {
+                            <td>@prop.GetValue(book, null)</td>
+                        }
+                        <td>
+                            <button class="btn-primary" data-id="@book.Id">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No books available.</p>
+    }
+</body>
+
+</html>

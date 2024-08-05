@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="~/css/site.css">
+	<script src="~/js/site.js"></script>
+	<!-- Head content here -->
+	<script>
+		$(document).ready(function () {
+			showPage('Default'); // Use the name of the action method that returns your default partial view
+		});
+	</script>
+</head>
+
+<body>
+	<div>
+		<button id="toggleButton" onclick="toggleMenu()"
+			style="position: fixed; top: 20px; left: 20px; z-index: 1000;">+</button>
+	</div>
+	<div id="menu"
+		style="position: fixed; width: 250px; height: 100%; background: #f0f0f0; transform: translateX(-250px); transition: transform 0.3s ease;">
+		<ul>
+			<li data-page="AddBook"><a href="#" onclick="showPage('AddBook')">Add Book</a></li>
+			<li data-page="DeleteBook"><a href="#" onclick="showPage('DeleteBook')">Delete Book</a></li>
+			<li data-page="FindBook"><a href="#" onclick="showPage('FindBook')">Find Book</a></li>
+			<li data-page="UpdateBook"><a href="#" onclick="showPage('UpdateBook')">Update Book</a></li>
+		</ul>
+	</div>
+	<div id="mainContent" style="margin-left: 250px;">
+		@RenderBody()
+	</div>
+
+</body>
+
+</html>

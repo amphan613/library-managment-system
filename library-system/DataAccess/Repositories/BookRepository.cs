@@ -1,5 +1,6 @@
 ﻿using library_system.Context;
 using library_system.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace library_system.DataAccess.Repositories
 {
@@ -9,6 +10,7 @@ namespace library_system.DataAccess.Repositories
 		Task<bool> DeleteAsync(int bookId);
 		void Update(Book book);
 		Task<Book?> GetByIdAsync(int id);
+		Task<List<Book>> GetAllAsync();
 	}
 
 	public class BookRepository(LibraryDbContext dbContext) : IBookRepository
@@ -42,6 +44,11 @@ namespace library_system.DataAccess.Repositories
 			}
 
 			return book;
+		}
+
+		public async Task<List<Book>> GetAllAsync()
+		{
+			return await _dbContext.Books.ToListAsync();
 		}
 	}
 }

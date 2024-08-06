@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 
 
 builder.Services.AddControllers().AddJsonOptions(options =>
@@ -37,6 +39,8 @@ builder.Services.AddTransient<PaperBackDiscountStrategy>();
 builder.Services.AddTransient<DefaultDiscountStrategy>();
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -7,4 +7,8 @@
     <RootNamespace>library_ui</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\library-aspire\library-aspire.ServiceDefaults\library-aspire.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>

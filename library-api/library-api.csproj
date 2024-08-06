@@ -22,4 +22,8 @@
     <Folder Include="Postman\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\library-aspire\library-aspire.ServiceDefaults\library-aspire.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>

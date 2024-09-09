@@ -1,6 +1,7 @@
 ﻿using library_system.Services;
 using library_system.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace library_system.Controllers
 {
@@ -52,6 +53,7 @@ namespace library_system.Controllers
 			}
 		}
 
+        [Authorize]
 		[HttpGet("{id?}")]
 		public async Task<IActionResult> Get(int? id)
 		{
